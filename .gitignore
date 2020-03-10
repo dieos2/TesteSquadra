@@ -3,3 +3,5 @@
 ################################################################################
 
 /TesteSquadra/obj
+/.vs/TesteSquadra
+/TesteSquadra/bin/Debug/netcoreapp2.1
