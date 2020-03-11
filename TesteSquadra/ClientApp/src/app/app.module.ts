@@ -12,6 +12,7 @@ import { SistemasComponent } from './sistemas/sistemas.component';
 import { SistemaComponent } from './sistema/sistema.component';
 import { SistemaAddEditComponent } from './sistema-add-edit/sistema-add-edit.component';
 import { SistemaService } from './services/sistema.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SistemaService } from './services/sistema.service';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule,
   ],
   providers: [
     //BlogPostService,
