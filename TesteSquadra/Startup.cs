@@ -30,7 +30,14 @@ namespace TesteSquadra
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
             services.AddDbContext<TesteSquadraContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("TesteSquadraContext")));
 

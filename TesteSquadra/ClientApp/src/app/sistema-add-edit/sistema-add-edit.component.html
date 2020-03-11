@@ -1,0 +1,42 @@
+<h1>{{actionType}} Sistema</h1>
+<form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Sigla</label>
+    <div class="col-md-12">
+      <input class="form-control" type="text" formControlName="sigla">
+    </div>
+    <span class="text-danger ml-3" *ngIf="sigla.invalid && formDir.submitted">
+      Sigla é obrigatorio.
+    </span>
+  </div>
+  <div class="form-group row">
+    <label class="control-label col-md-12" for="Body">Descrição</label>
+    <div class="col-md-12">
+      <textarea class="form-control" rows="5" formControlName="descricao"></textarea>
+    </div>
+    <span class="text-danger ml-3" *ngIf="descricao.invalid && formDir.submitted">
+      Descrição é obrigatorio is required.
+    </span>
+  </div>
+  <div class="form-group row">
+    <label class=" control-label col-md-12">E-mail de atendimento do sistema</label>
+    <div class="col-md-12">
+      <input class="form-control" type="text" formControlName="email">
+    </div>
+    <!--<span class="text-danger ml-3" *ngIf="email.invalid && formDir.submitted">
+      
+    </span>-->
+  </div>
+  <div class="form-group row">
+    <label class=" control-label col-md-12">URL</label>
+    <div class="col-md-12">
+      <input class="form-control" type="text" formControlName="url">
+    </div>
+   
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-success float-right">Save</button>
+    <button class="btn btn-secondary float-left" (click)="cancel()">Cancel</button>
+  </div>
+</form>

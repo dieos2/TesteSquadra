@@ -3,12 +3,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { BlogPost } from '../models/blogposts';
+import { Sistema } from '../models/sistemas';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BlogPostService {
+export class SistemaService {
 
   myAppUrl: string;
   myApiUrl: string;
@@ -19,43 +19,43 @@ export class BlogPostService {
   };
   constructor(private http: HttpClient) {
     this.myAppUrl = environment.appUrl;
-    this.myApiUrl = 'api/BlogPosts/';
+    this.myApiUrl = 'api/Sistemas/';
   }
 
-  getBlogPosts(): Observable<BlogPost[]> {
-    return this.http.get<BlogPost[]>(this.myAppUrl + this.myApiUrl)
+  getSistemas(): Observable<Sistema[]> {
+    return this.http.get<Sistema[]>(this.myAppUrl + this.myApiUrl)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
       );
   }
 
-  getBlogPost(postId: number): Observable<BlogPost> {
-    return this.http.get<BlogPost>(this.myAppUrl + this.myApiUrl + postId)
+  getSistema(Id: number): Observable<Sistema> {
+    return this.http.get<Sistema>(this.myAppUrl + this.myApiUrl + Id)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
       );
   }
 
-  saveBlogPost(blogPost): Observable<BlogPost> {
-    return this.http.post<BlogPost>(this.myAppUrl + this.myApiUrl, JSON.stringify(blogPost), this.httpOptions)
+  saveSistema(sistema): Observable<Sistema> {
+    return this.http.post<Sistema>(this.myAppUrl + this.myApiUrl, JSON.stringify(sistema), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
       );
   }
 
-  updateBlogPost(postId: number, blogPost): Observable<BlogPost> {
-    return this.http.put<BlogPost>(this.myAppUrl + this.myApiUrl + postId, JSON.stringify(blogPost), this.httpOptions)
+  updateSistema(postId: number, sistema): Observable<Sistema> {
+    return this.http.put<Sistema>(this.myAppUrl + this.myApiUrl + postId, JSON.stringify(sistema), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
       );
   }
 
-  deleteBlogPost(postId: number): Observable<BlogPost> {
-    return this.http.delete<BlogPost>(this.myAppUrl + this.myApiUrl + postId)
+  deleteSistema(postId: number): Observable<Sistema> {
+    return this.http.delete<Sistema>(this.myAppUrl + this.myApiUrl + postId)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
