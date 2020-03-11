@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TesteSquadra.Models;
+using TesteSquadra.Services;
 
 namespace TesteSquadra.Controllers
 {
@@ -13,113 +14,80 @@ namespace TesteSquadra.Controllers
     [ApiController]
     public class SistemasController : ControllerBase
     {
-        private readonly TesteSquadraContext _context;
+        //private readonly TesteSquadraContext _context;
+        private readonly ISistemaService _service;
 
-        public SistemasController(TesteSquadraContext context)
+        public SistemasController(ISistemaService service)
         {
-            _context = context;
+            //_context = context;
+            _service = service;
         }
 
         // GET: api/Sistemas
         [HttpGet]
-        public IEnumerable<Sistemas> GetSistemas()
+        public ActionResult<IEnumerable<Sistemas>> GetSistemas()
         {
-            return _context.Sistemas;
+            var items = _service.GetAllItems();
+            return Ok(items);
+           
         }
 
         // GET: api/Sistemas/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetSistemas([FromRoute] int id)
+        public ActionResult GetSistemas([FromRoute] int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var sistemas = await _context.Sistemas.FindAsync(id);
-
-            if (sistemas == null)
+            var item = _service.GetById(id);
+            if (item == null)
             {
                 return NotFound();
             }
+            return Ok(item);
 
-            return Ok(sistemas);
+          
         }
 
         // PUT: api/Sistemas/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutSistemas([FromRoute] int id, [FromBody] Sistemas sistemas)
+        public ActionResult PutSistemas([FromRoute] int id, [FromBody] Sistemas sistemas)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            if (id != sistemas.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(sistemas).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SistemasExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            var item = _service.Edit(sistemas);
+            return CreatedAtAction("Get", new { id = item.Id }, item);
         }
 
         // POST: api/Sistemas
         [HttpPost]
-        public async Task<IActionResult> PostSistemas([FromBody] Sistemas sistemas)
+        public ActionResult PostSistemas([FromBody] Sistemas sistemas)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            _context.Sistemas.Add(sistemas);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetSistemas", new { id = sistemas.Id }, sistemas);
+            var item = _service.Add(sistemas);
+            return CreatedAtAction("Get", new { id = item.Id }, item);
+           
         }
 
         // DELETE: api/Sistemas/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteSistemas([FromRoute] int id)
+        public ActionResult DeleteSistemas([FromRoute] int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            var sistemas = await _context.Sistemas.FindAsync(id);
-            if (sistemas == null)
+            var existingItem = _service.GetById(id);
+            if (existingItem == null)
             {
                 return NotFound();
             }
-
-            _context.Sistemas.Remove(sistemas);
-            await _context.SaveChangesAsync();
-
-            return Ok(sistemas);
+            _service.Remove(id);
+            return Ok();
         }
 
-        private bool SistemasExists(int id)
-        {
-            return _context.Sistemas.Any(e => e.Id == id);
-        }
+        //private bool SistemasExists(int id)
+        //{
+        //    return _context.Sistemas.Any(e => e.Id == id);
+        //}
     }
 }
