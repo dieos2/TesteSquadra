@@ -66,15 +66,15 @@ export class SistemaAddEditComponent implements OnInit {
 
     if (this.postId > 0) {
       this.actionType = 'Editar';
-      
+
       this.sistemaservice.getSistema(this.postId)
         .subscribe(data => (
           this.existingSistema = data,
-        
+
           this.form.controls[this.formDescricao].setValue(data.descricao),
 
           this.form.controls[this.formSigla].setValue(data.sigla),
-          this.form.controls[this.formEmail].setValue(data.email), 
+          this.form.controls[this.formEmail].setValue(data.email),
           this.form.controls[this.formUrl].setValue(data.url),
           this.form.controls[this.formStatus].setValue(data.status),
 
@@ -110,13 +110,20 @@ export class SistemaAddEditComponent implements OnInit {
 
       this.sistemaservice.saveSistema(sistema)
         .subscribe((data) => {
-          AppEventService.set('success', 'Sistema', 'Inserido com sucesso');
-               
-                
+          const ans = confirm('Operação realizada com sucesso.');
+
+          if (ans) {
+            this.router.navigate(['/']);
+          }
+
+
         });
+      
+
     }
 
     if (this.actionType === 'Editar') {
+      debugger;
       let sistema: Sistema = {
         id: this.existingSistema.id,
         dataEdicao: new Date(),
@@ -130,8 +137,14 @@ export class SistemaAddEditComponent implements OnInit {
       };
       this.sistemaservice.updateSistema(sistema.id, sistema)
         .subscribe((data) => {
-          AppEventService.set('success', 'Sistema', 'Editado com sucesso');
+          const ans = confirm('Operação realizada com sucesso.');
+          if (ans) {
+            this.router.navigate(['/']);
+          }
+          //AppEventService.set('success', 'Sistema', 'Editado com sucesso');
         });
+
+
     }
   }
 

@@ -15,7 +15,8 @@ export class SistemasComponent implements OnInit {
   sistemas$: Observable<Sistema[]>;
   public p: number = 1;
   public count: number = 1;
-  pesquisaForm: any;  
+  pesquisaForm: any;
+  buscando = false;
   constructor(private SistemaService: SistemaService, private formbulider: FormBuilder) {
   }
 
@@ -27,17 +28,22 @@ export class SistemasComponent implements OnInit {
     });  
   }
   onPesquisaFormSubmit() {
-    debugger;
+   
     const pesquisa = this.pesquisaForm.value;
     this.loadSistemas(pesquisa);
+    this.buscando = true;
+    this.p = 1;
   } 
   loadSistemas(pesquisa) {
+   
     this.sistemas$ = this.SistemaService.getSistemas(pesquisa);
+    
   }
   resetForm() {
     
     this.pesquisaForm.reset();
-   
+    this.onPesquisaFormSubmit();
+    this.buscando = false;
   }
 
   delete(Id) {
@@ -45,7 +51,7 @@ export class SistemasComponent implements OnInit {
     
     if (ans) {
       this.SistemaService.deleteSistema(Id).subscribe((data) => {
-        
+        this.p = 1;
       });
     }
   }

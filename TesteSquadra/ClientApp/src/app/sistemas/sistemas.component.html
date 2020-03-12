@@ -32,44 +32,53 @@
 
 
       <div class="text-right">
-        <button type="submit" class="btn btn-primary m-1">Pesquisar</button>
-        <a (click)="resetForm()" class="btn btn-primary  ">Limpar</a>
-        <a [routerLink]="['/add']" class="btn btn-success m-1 ">Novo Sistema</a>
+        <button type="submit" class="btn btn-primary m-1">Pesquisar <i class="fa fa-search"></i></button>
+        <a (click)="resetForm()" class="btn btn-primary text-white  ">Limpar <i class="fa fa-redo"></i></a>
+        <a [routerLink]="['/add']" class="btn btn-success m-1 ">Novo Sistema <i class="fa fa-plus-square"></i></a>
       </div>
     </form>
   </div>
 </div>
 <!--<p *ngIf="!(sistemas$ | async)"><em>Carregando...</em></p>-->
-<table class="table table-sm table-hover" *ngIf="(sistemas$ | async)?.length>0">
-  <thead>
-    <tr>
-      <th>Descricao</th>
-      <th>Sigla</th>
-      <th>E-mail de atendimento </th>
-      <th>URL</th>
-      <th>Status</th>
-      <th>Ações</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let sistema of (sistemas$ | async | paginate: { itemsPerPage: count, currentPage: p })">
-      <td>{{ sistema.descricao }}</td>
-      <td>{{ sistema.sigla }}</td>
-      <td>{{ sistema.email }}</td>
-      <!--<td>{{ sistema.dt | date: "dd.MM.y" }}</td>-->
-      <td>{{ sistema.url }}</td>
-      <td>{{ sistema.status }}</td>
+<div class="mt-4" *ngIf="(sistemas$ | async)?.length>0">
+  <h5>Resultado da Consulta</h5>
+  <table class="table table-dark table-hover" *ngIf="(sistemas$ | async)?.length>0">
+    <thead>
+      <tr>
+        <th>Descricao</th>
+        <th>Sigla</th>
+        <th>E-mail de atendimento </th>
+        <th>URL</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sistema of (sistemas$ | async | paginate: { itemsPerPage: count, currentPage: p })">
+        <td>{{ sistema.descricao }}</td>
+        <td>{{ sistema.sigla }}</td>
+        <td>{{ sistema.email }}</td>
 
-      <td>
-        <a [routerLink]="['/sistema/edit/', sistema.id]" class="btn btn-primary btn-sm float-right">Edit</a>
-        <a [routerLink]="" (click)="delete(sistema.id)" class="btn btn-danger btn-sm float-right">Delete</a>
-      </td>
-    </tr>
-  </tbody>
+        <td>{{ sistema.url }}</td>
+        <td>{{ sistema.status }}</td>
+
+        <td>
+          <a [routerLink]="['/sistema/edit/', sistema.id]" class="btn btn-primary btn-sm ">Edit</a>
+          <a [routerLink]="" (click)="delete(sistema.id)" class="btn btn-danger btn-sm ">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
   <!--inclindo o controle de paginação.-->
   <div class="text-right">
 
     <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Próximo"></pagination-controls>
   </div>
+</div>
+<div class="p-10" *ngIf="(!sistemas$ || (sistemas$ | async)?.length === 0) && buscando">
+  <h4>Nenhum Sistema foi encontrado. Favor revisar os critérios da sua pesquisa!</h4>
+  <p> <a (click)="resetForm()" class="btn btn-primary text-white  ">Limpar <i class="fa fa-redo"></i></a></p>
+</div>
 
-</table>

@@ -45,7 +45,7 @@ namespace TesteSquadra.Services
         public IEnumerable<Sistemas> GetAllItems(CriterioDeBusca criterioDeBusca)
         {
 
-            return _context.Sistemas.Where(a=>a.Sigla.Contains(criterioDeBusca.Sigla));
+            return _context.Sistemas.Where(a=>a.Sigla.Contains(criterioDeBusca.Sigla) || a.Descricao.Contains(criterioDeBusca.Descricao) || a.Email.Contains(criterioDeBusca.Email));
         }
         public Sistemas GetById(int id)
         {

@@ -24,7 +24,7 @@ export class SistemaService {
   }
 
   getSistemas(pesquisa): Observable<Sistema[]> {
-    return this.http.get<Sistema[]>(this.myAppUrl + this.myApiUrl + "?sigla="+pesquisa.Sigla)
+    return this.http.get<Sistema[]>(this.myAppUrl + this.myApiUrl + "?sigla=" + pesquisa.Sigla + "&descricao=" + pesquisa.Descricao+"&email="+pesquisa.Email)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
