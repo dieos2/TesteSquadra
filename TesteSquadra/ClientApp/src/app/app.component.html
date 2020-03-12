@@ -1,11 +1,13 @@
 <div class="container">
 
-  <a [routerLink]="['/']" class="btn btn-info">Start</a>
-  <router-outlet></router-outlet>
+  <!--<a [routerLink]="['/']" class="btn btn-info">Start</a>-->
+  <router-outlet>
+    <app-flash-alert [tipo]="tipoAlerta" [navigate]="navigate" [msg]="msg" *ngIf="alertar"></app-flash-alert>
+  </router-outlet>
 
 
 </div>
-<div class="container">
+<!--<div class="container">
   <h2 class="text-secondary text-center">{{ title }}!</h2>
   <hr />
   <div>
@@ -33,9 +35,9 @@
         </tr>
       </tbody>
     </table>
-  </div>
+  </div>-->
   <!--inclindo o controle de paginação.-->
-  <div class="text-right">
+  <!--<div class="text-right">
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
-</div>
+</div>-->

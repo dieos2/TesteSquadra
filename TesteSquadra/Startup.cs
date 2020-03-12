@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using TesteSquadra.Data;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.OpenApi.Models;
+using TesteSquadra.Services;
 
 namespace TesteSquadra
 {
@@ -38,6 +39,8 @@ namespace TesteSquadra
                     .AllowAnyHeader()
                     .AllowCredentials());
             });
+            //injeta a classe de serviço
+            services.AddTransient<ISistemaService, SistemaService>();
             services.AddDbContext<TesteSquadraContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("TesteSquadraContext")));
 

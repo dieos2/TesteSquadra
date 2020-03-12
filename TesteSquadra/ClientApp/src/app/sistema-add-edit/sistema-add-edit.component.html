@@ -1,40 +1,100 @@
-<h1>{{actionType}} Sistema</h1>
 <form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
-  <div class="form-group row">
-    <label class=" control-label col-md-12">Sigla</label>
-    <div class="col-md-12">
-      <input class="form-control" type="text" formControlName="sigla">
-    </div>
-    <span class="text-danger ml-3" *ngIf="sigla.invalid && formDir.submitted">
-      Sigla é obrigatorio.
-    </span>
-  </div>
-  <div class="form-group row">
-    <label class="control-label col-md-12" for="Body">Descrição</label>
-    <div class="col-md-12">
-      <textarea class="form-control" rows="5" formControlName="descricao"></textarea>
-    </div>
-    <span class="text-danger ml-3" *ngIf="descricao.invalid && formDir.submitted">
-      Descrição é obrigatorio is required.
-    </span>
-  </div>
-  <div class="form-group row">
-    <label class=" control-label col-md-12">E-mail de atendimento do sistema</label>
-    <div class="col-md-12">
-      <input class="form-control" type="text" formControlName="email">
-    </div>
-    <!--<span class="text-danger ml-3" *ngIf="email.invalid && formDir.submitted">
-      
-    </span>-->
-  </div>
-  <div class="form-group row">
-    <label class=" control-label col-md-12">URL</label>
-    <div class="col-md-12">
-      <input class="form-control" type="text" formControlName="url">
-    </div>
-   
-  </div>
+  <div class="">
+    <div class="p-3 mb-2 bg-secondary text-white"><h5>{{actionType}} Sistema</h5></div>
+    <div class="border p-3">
 
+      <div class="form-group row">
+        <label class=" control-label col-md-12">Sigla</label>
+        <div class="col-md-12">
+          <input class="form-control" type="text" formControlName="sigla">
+        </div>
+        <span class="text-danger ml-3" *ngIf="sigla.invalid && formDir.submitted">
+          Sigla é obrigatorio.
+        </span>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-md-12" for="Body">Descrição</label>
+        <div class="col-md-12">
+          <textarea class="form-control" rows="5" formControlName="descricao"></textarea>
+        </div>
+        <span class="text-danger ml-3" *ngIf="descricao.invalid && formDir.submitted">
+          Descrição é obrigatorio.
+        </span>
+      </div>
+      <div class="form-group row">
+        <label class=" control-label col-md-12">E-mail de atendimento do sistema</label>
+        <div class="col-md-12">
+          <input class="form-control" type="text" formControlName="emailsistema">
+        </div>
+        <span class="text-danger ml-3" *ngIf="email.invalid && formDir.submitted">
+          preencha um e-mail válido.
+        </span>
+      </div>
+      <div class="form-group row">
+        <label class=" control-label col-md-12">URL</label>
+        <div class="col-md-12">
+          <input class="form-control" type="text" formControlName="urlsistema">
+        </div>
+
+      </div>
+      <div *ng-hide="false">
+        <div  class="col-md-12 hide" *ngIf="actionType == 'Manter'">
+          <input class="form-control" type="text" formControlName="justificativaNova">
+          <span class="text-danger ml-3" *ngIf="justificativa.invalid && formDir.submitted  ">
+            Justificativa é obrigatória.
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="" *ngIf="actionType == 'Editar'">
+    <div class="p-3 mb-2 bg-secondary text-white"><h5>Controle do Sistema</h5></div>
+    <div class="border p-3">
+      <div class="form-group row">
+        <label class=" control-label col-md-12">Status</label>
+
+        <!--<select formControlName="status">
+          <option value="Ativo">Ativo</option>
+          <option value="Cancelado">Cancelado</option>
+        </select>-->
+
+
+      </div>
+      <div class="form-group row">
+        <label class=" control-label col-md-12">Data de Edição</label>
+        <div class="col-md-12">
+          <input class="form-control" type="text" disabled formControlName="dataedicao">
+        </div>
+
+      </div>
+      <div class="form-group row">
+        <label class=" control-label col-md-12">Usuario responsável pela última alteração</label>
+        <div class="col-md-12">
+          <input class="form-control" type="text" disabled formControlName="usuario">
+        </div>
+
+      </div>
+      <div class="form-group row">
+        <label class=" control-label col-md-12">Justificativa da ultima alteração</label>
+        <div class="col-md-12">
+          <input class="form-control" type="text" disabled formControlName="justificativa">
+        </div>
+
+      </div>
+      <div class="form-group row">
+        <label class=" control-label col-md-12">Nova Justificativa da alteração</label>
+        <div class="col-md-12">
+          <input class="form-control" type="text" formControlName="justificativaNova">
+          <span  class="text-danger ml-3" *ngIf="justificativa.invalid && formDir.submitted ">
+           Justificativa é obrigatória.
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
   <div class="form-group">
     <button type="submit" class="btn btn-success float-right">Save</button>
     <button class="btn btn-secondary float-left" (click)="cancel()">Cancel</button>

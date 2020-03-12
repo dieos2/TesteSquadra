@@ -10,7 +10,8 @@ import { Sistema } from '../models/sistemas';
 })
 export class SistemasComponent implements OnInit {
   sistemas$: Observable<Sistema[]>;
-
+  public p: number = 1;
+  public count: number = 1;
   constructor(private SistemaService: SistemaService) {
   }
 

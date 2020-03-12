@@ -3,9 +3,10 @@ export class Sistema {
   descricao: string;
   sigla: string;
   email: string;
-  uRL: string;
+  url: string;
   status: string;
-  usuarioResponsavel: string;
+  usuarioresponsavel: string;
   dataEdicao: Date;
   justificativa: string;
+   
 }
