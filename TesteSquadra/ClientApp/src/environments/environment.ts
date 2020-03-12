@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   appUrl: 'https://localhost:44343/'
-  //appUrl: 'http://localhost:8899/'
+  //appUrl: 'https://testesquadra.local'
 };
 
 /*

@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SistemaService } from '../services/sistema.service';
 import { Sistema } from '../models/sistemas';
-import { parse } from 'date-fns';
+
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -38,7 +38,7 @@ export class SistemaAddEditComponent implements OnInit {
     this.formEmail = 'emailsistema';
     this.formJustificativa = 'justificativa';
     this.formStatus = 'status';
-    this.formUsuario = 'usuario';
+    this.formUsuario = 'usuarioR';
     this.formDataedicao = 'dataedicao';
     this.formJustificativaNova = 'justificativaNova';
 
@@ -66,10 +66,11 @@ export class SistemaAddEditComponent implements OnInit {
 
     if (this.postId > 0) {
       this.actionType = 'Editar';
+      
       this.sistemaservice.getSistema(this.postId)
         .subscribe(data => (
           this.existingSistema = data,
-
+        
           this.form.controls[this.formDescricao].setValue(data.descricao),
 
           this.form.controls[this.formSigla].setValue(data.sigla),
@@ -79,7 +80,7 @@ export class SistemaAddEditComponent implements OnInit {
 
           this.form.controls[this.formDataedicao].setValue(this.pipe.transform(data.dataEdicao, 'dd/MM/yyyy HH:mm:ss')),
           this.form.controls[this.formJustificativa].setValue(data.justificativa),
-          this.form.controls[this.formUsuario].setValue(data.usuarioresponsavel)
+          this.form.controls['usuario'].setValue(data.usuarioResponsavel)
 
 
         ));
@@ -104,7 +105,7 @@ export class SistemaAddEditComponent implements OnInit {
         justificativa: "Inclusão",
         email: this.form.get(this.formEmail).value,
         url: this.form.get(this.formUrl).value,
-        usuarioresponsavel: 'Diego Serra'
+        usuarioResponsavel: 'Diego Serra'
       };
 
       this.sistemaservice.saveSistema(sistema)
@@ -123,7 +124,7 @@ export class SistemaAddEditComponent implements OnInit {
         justificativa: this.form.get(this.formJustificativaNova).value,
         email: this.form.get(this.formEmail).value,
         status: this.form.get(this.formStatus).value,
-        usuarioresponsavel: "Diego Serra",
+        usuarioResponsavel: "Diego Serra",
         descricao: this.form.get(this.formDescricao).value,
         sigla: this.form.get(this.formSigla).value
       };

@@ -2,3 +2,6 @@ C:\Users\DELL\source\repos\TesteSquadra\XUnitTestProject1\obj\Debug\netcoreapp2.
 C:\Users\DELL\source\repos\TesteSquadra\XUnitTestProject1\obj\Debug\netcoreapp2.1\TesteSquadraTest.csproj.CoreCompileInputs.cache
 C:\Users\DELL\source\repos\TesteSquadra\XUnitTestProject1\obj\Debug\netcoreapp2.1\TesteSquadraTest.AssemblyInfoInputs.cache
 C:\Users\DELL\source\repos\TesteSquadra\XUnitTestProject1\obj\Debug\netcoreapp2.1\TesteSquadraTest.AssemblyInfo.cs
+C:\Users\dieos\source\repos\TesteSquadra\XUnitTestProject1\obj\Debug\netcoreapp2.1\TesteSquadraTest.csprojAssemblyReference.cache
+C:\Users\dieos\source\repos\TesteSquadra\XUnitTestProject1\obj\Debug\netcoreapp2.1\TesteSquadraTest.AssemblyInfoInputs.cache
+C:\Users\dieos\source\repos\TesteSquadra\XUnitTestProject1\obj\Debug\netcoreapp2.1\TesteSquadraTest.AssemblyInfo.cs

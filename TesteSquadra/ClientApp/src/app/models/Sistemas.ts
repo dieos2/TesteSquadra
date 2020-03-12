@@ -5,7 +5,7 @@ export class Sistema {
   email: string;
   url: string;
   status: string;
-  usuarioresponsavel: string;
+  usuarioResponsavel: string;
   dataEdicao: Date;
   justificativa: string;
    

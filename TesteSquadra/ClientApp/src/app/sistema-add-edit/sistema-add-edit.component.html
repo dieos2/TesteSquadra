@@ -38,7 +38,7 @@
 
       </div>
       <div *ng-hide="false">
-        <div  class="col-md-12 hide" *ngIf="actionType == 'Manter'">
+        <div class="col-md-12 hide" *ngIf="actionType == 'Manter'">
           <input class="form-control" type="text" formControlName="justificativaNova">
           <span class="text-danger ml-3" *ngIf="justificativa.invalid && formDir.submitted  ">
             Justificativa é obrigatória.
@@ -53,12 +53,13 @@
     <div class="border p-3">
       <div class="form-group row">
         <label class=" control-label col-md-12">Status</label>
+        <div class="col-md-12">
+          <select class="btn btn-primary" formControlName="status">
+            <option value="Ativo">Ativo</option>
+            <option value="Cancelado">Cancelado</option>
+          </select>
 
-        <!--<select formControlName="status">
-          <option value="Ativo">Ativo</option>
-          <option value="Cancelado">Cancelado</option>
-        </select>-->
-
+        </div>
 
       </div>
       <div class="form-group row">
@@ -86,8 +87,8 @@
         <label class=" control-label col-md-12">Nova Justificativa da alteração</label>
         <div class="col-md-12">
           <input class="form-control" type="text" formControlName="justificativaNova">
-          <span  class="text-danger ml-3" *ngIf="justificativa.invalid && formDir.submitted ">
-           Justificativa é obrigatória.
+          <span class="text-danger ml-3" *ngIf="justificativa.invalid && formDir.submitted ">
+            Justificativa é obrigatória.
           </span>
         </div>
 

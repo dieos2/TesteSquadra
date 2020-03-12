@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DELL\\source\\repos\\TesteSquadra\\XUnitTestProject1\\TesteSquadraTest.csproj": {}
+    "C:\\Users\\dieos\\source\\repos\\TesteSquadra\\XUnitTestProject1\\TesteSquadraTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DELL\\source\\repos\\TesteSquadra\\TesteSquadra\\TesteSquadra.csproj": {
+    "C:\\Users\\dieos\\source\\repos\\TesteSquadra\\TesteSquadra\\TesteSquadra.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\TesteSquadra\\TesteSquadra\\TesteSquadra.csproj",
+        "projectUniqueName": "C:\\Users\\dieos\\source\\repos\\TesteSquadra\\TesteSquadra\\TesteSquadra.csproj",
         "projectName": "TesteSquadra",
-        "projectPath": "C:\\Users\\DELL\\source\\repos\\TesteSquadra\\TesteSquadra\\TesteSquadra.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\source\\repos\\TesteSquadra\\TesteSquadra\\obj\\",
+        "projectPath": "C:\\Users\\dieos\\source\\repos\\TesteSquadra\\TesteSquadra\\TesteSquadra.csproj",
+        "packagesPath": "C:\\Users\\dieos\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dieos\\source\\repos\\TesteSquadra\\TesteSquadra\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\ProgramData\\Xamarin\\NuGet\\",
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dieos\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -27,7 +27,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://xifix.pkgs.visualstudio.com/_packaging/Xifix@Release/nuget/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp2.1": {
@@ -55,6 +56,7 @@
               "version": "[2.1.2, )"
             },
             "Microsoft.NETCore.App": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[2.1.0, )",
               "autoReferenced": true
@@ -69,28 +71,34 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\DELL\\source\\repos\\TesteSquadra\\XUnitTestProject1\\TesteSquadraTest.csproj": {
+    "C:\\Users\\dieos\\source\\repos\\TesteSquadra\\XUnitTestProject1\\TesteSquadraTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\TesteSquadra\\XUnitTestProject1\\TesteSquadraTest.csproj",
+        "projectUniqueName": "C:\\Users\\dieos\\source\\repos\\TesteSquadra\\XUnitTestProject1\\TesteSquadraTest.csproj",
         "projectName": "TesteSquadraTest",
-        "projectPath": "C:\\Users\\DELL\\source\\repos\\TesteSquadra\\XUnitTestProject1\\TesteSquadraTest.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\source\\repos\\TesteSquadra\\XUnitTestProject1\\obj\\",
+        "projectPath": "C:\\Users\\dieos\\source\\repos\\TesteSquadra\\XUnitTestProject1\\TesteSquadraTest.csproj",
+        "packagesPath": "C:\\Users\\dieos\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dieos\\source\\repos\\TesteSquadra\\XUnitTestProject1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\ProgramData\\Xamarin\\NuGet\\",
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dieos\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -99,13 +107,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://xifix.pkgs.visualstudio.com/_packaging/Xifix@Release/nuget/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp2.1": {
             "projectReferences": {
-              "C:\\Users\\DELL\\source\\repos\\TesteSquadra\\TesteSquadra\\TesteSquadra.csproj": {
-                "projectPath": "C:\\Users\\DELL\\source\\repos\\TesteSquadra\\TesteSquadra\\TesteSquadra.csproj"
+              "C:\\Users\\dieos\\source\\repos\\TesteSquadra\\TesteSquadra\\TesteSquadra.csproj": {
+                "projectPath": "C:\\Users\\dieos\\source\\repos\\TesteSquadra\\TesteSquadra\\TesteSquadra.csproj"
               }
             }
           }
@@ -124,6 +133,7 @@
               "version": "[15.9.0, )"
             },
             "Microsoft.NETCore.App": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[2.1.0, )",
               "autoReferenced": true
@@ -138,10 +148,16 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
