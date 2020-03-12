@@ -10,7 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\src\app\models\blogposts.ts" />
     <None Remove="ClientApp\src\app\models\Sistemas.ts" />
   </ItemGroup>
 
@@ -27,7 +26,6 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\models\Sistemas.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\models\blogposts.ts" />
   </ItemGroup>
 
 </Project>

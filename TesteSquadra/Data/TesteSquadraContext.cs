@@ -12,6 +12,5 @@ using TesteSquadra.Models;
         {
         }
 
-        public DbSet<BlogPost> BlogPost { get; set; }
-        public DbSet<Sistemas> Sistemas { get; set; }
+          public DbSet<Sistemas> Sistemas { get; set; }
 }

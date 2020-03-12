@@ -19,7 +19,7 @@ namespace TesteSquadraTest
               
             };
         }
-        public IEnumerable<Sistemas> GetAllItems()
+        public IEnumerable<Sistemas> GetAllItems(CriterioDeBusca criterioDeBusca)
         {
             return _sistema;
         }

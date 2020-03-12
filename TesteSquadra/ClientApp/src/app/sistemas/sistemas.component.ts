@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SistemaService } from '../services/sistema.service';
 import { Sistema } from '../models/sistemas';
+
 import { FormBuilder, Validators } from '@angular/forms';
 
 
@@ -41,9 +42,10 @@ export class SistemasComponent implements OnInit {
 
   delete(Id) {
     const ans = confirm('Você deseja deletar o sistema de id: ' + Id);
+    
     if (ans) {
       this.SistemaService.deleteSistema(Id).subscribe((data) => {
-        this.loadSistemas();
+        
       });
     }
   }

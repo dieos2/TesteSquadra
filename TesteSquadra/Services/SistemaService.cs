@@ -42,9 +42,10 @@ namespace TesteSquadra.Services
 
             return sistema;
         }
-        public IEnumerable<Sistemas> GetAllItems()
+        public IEnumerable<Sistemas> GetAllItems(CriterioDeBusca criterioDeBusca)
         {
-            return _context.Sistemas;
+
+            return _context.Sistemas.Where(a=>a.Sigla.Contains(criterioDeBusca.Sigla));
         }
         public Sistemas GetById(int id)
         {

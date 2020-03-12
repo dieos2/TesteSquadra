@@ -24,16 +24,18 @@ namespace TesteSquadraTest
         [Fact]
         public void Get_WhenCalled_ReturnsOkResult()
         {
+            CriterioDeBusca criterioDeBusca = new CriterioDeBusca();
             // Act
-            var okResult = _controller.GetSistemas();
+            var okResult = _controller.GetSistemas(criterioDeBusca);
             // Assert
             Assert.IsType<OkObjectResult>(okResult.Result);
         }
         [Fact]
         public void Get_WhenCalled_ReturnsAllItems()
         {
+            CriterioDeBusca criterioDeBusca = new CriterioDeBusca();
             // Act
-            var okResult = _controller.GetSistemas().Result as OkObjectResult;
+            var okResult = _controller.GetSistemas(criterioDeBusca).Result as OkObjectResult;
             // Assert
             var items = Assert.IsType<List<Sistemas>>(okResult.Value);
             Assert.Equal(1, items.Count);
@@ -147,8 +149,9 @@ namespace TesteSquadraTest
             var Id_Existente = 1;
             // Act
             var okResponse = _controller.DeleteSistemas(Id_Existente);
+            CriterioDeBusca criterioDeBusca = new CriterioDeBusca();
             // Assert
-            Assert.Equal(0, _service.GetAllItems().Count());
+            Assert.Equal(0, _service.GetAllItems(criterioDeBusca).Count());
         }
     }
 }

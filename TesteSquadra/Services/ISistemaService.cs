@@ -8,7 +8,7 @@ namespace TesteSquadra.Services
 {
     public interface ISistemaService
     {
-        IEnumerable<Sistemas> GetAllItems();
+        IEnumerable<Sistemas> GetAllItems(CriterioDeBusca criterioDeBusca);
         Sistemas Add(Sistemas novoItem);
         Sistemas Edit(Sistemas sistema);
         Sistemas GetById(int id);

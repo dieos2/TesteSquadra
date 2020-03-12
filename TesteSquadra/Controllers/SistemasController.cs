@@ -19,15 +19,21 @@ namespace TesteSquadra.Controllers
 
         public SistemasController(ISistemaService service)
         {
-            //_context = context;
+            
             _service = service;
         }
 
         // GET: api/Sistemas
         [HttpGet]
-        public ActionResult<IEnumerable<Sistemas>> GetSistemas()
+        public ActionResult<IEnumerable<Sistemas>> GetSistemas(string sigla = "", string descricao = "", string email = "")
         {
-            var items = _service.GetAllItems();
+            CriterioDeBusca criterioDeBusca = new CriterioDeBusca() {
+                Descricao = descricao,
+                Sigla = sigla,
+                Email = email
+            
+            };
+            var items = _service.GetAllItems(criterioDeBusca);
             return Ok(items);
            
         }

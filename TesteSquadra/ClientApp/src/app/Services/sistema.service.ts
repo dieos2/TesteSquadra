@@ -5,6 +5,7 @@ import { retry, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Sistema } from '../models/sistemas';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,7 +24,7 @@ export class SistemaService {
   }
 
   getSistemas(pesquisa): Observable<Sistema[]> {
-    return this.http.get<Sistema[]>(this.myAppUrl + this.myApiUrl + pesquisa)
+    return this.http.get<Sistema[]>(this.myAppUrl + this.myApiUrl + "?sigla="+pesquisa.Sigla)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
