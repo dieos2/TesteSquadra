@@ -14,7 +14,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class SistemasComponent implements OnInit {
   sistemas$: Observable<Sistema[]>;
   public p: number = 1;
-  public count: number = 1;
+  public count: number = 2;
   pesquisaForm: any;
   buscando = false;
   constructor(private SistemaService: SistemaService, private formbulider: FormBuilder) {
