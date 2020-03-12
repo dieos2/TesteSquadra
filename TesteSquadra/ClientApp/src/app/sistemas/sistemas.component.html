@@ -1,31 +1,45 @@
 
 
-<p *ngIf="!(sistemas$ | async)"><em>Carregando...</em></p>
+
 
 <div class="">
   <div class="p-3 mb-2 bg-secondary text-white"><h5>Pesquisar Sistema</h5></div>
   <div class="border p-3">
-    <div class="form-group">
-      <label for="descricao">Descricao</label>
-      <input type="text" class="form-control" id="descricao" aria-describedby="emailHelp" placeholder="Descrição">
-    </div>
-    <div class="form-group">
-      <label for="sigla">Sigla</label>
-      <input type="text" class="form-control" id="sigla" placeholder="Password">
-    </div>
-    <div class="form-group">
-      <label for="email">E-mail</label>
-      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Descrição">
-    </div>
+    <form [formGroup]="pesquisaForm" #formDir="ngForm" novalidate (ngSubmit)="onPesquisaFormSubmit()">
+
+      <div class="form-group row">
+        <label class="control-label col-md-12" for="Body">Descrição</label>
+        <div class="col-md-12">
+          <input class="form-control" type="text" formControlName="Descricao">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class=" control-label col-md-12">Sigla</label>
+        <div class="col-md-12">
+          <input class="form-control" type="text" formControlName="Sigla">
+        </div>
+
+      </div>
+      <div class="form-group row">
+        <label class=" control-label col-md-12">E-mail de atendimento do sistema</label>
+        <div class="col-md-12">
+          <input class="form-control" type="text" formControlName="Email">
+        </div>
+        <span class="text-danger ml-3" *ngIf="email.invalid && formDir.submitted">
+          preencha um e-mail válido.
+        </span>
+      </div>
 
 
-    <div class="text-right">
-      <a [routerLink]="['/add']" class="btn m-1 btn-primary ">Pesquisar</a>
-      <a [routerLink]="['/add']" class="btn btn-primary  ">Limpar</a>
-      <a [routerLink]="['/add']" class="btn btn-success m-1 ">Novo Sistema</a>
-    </div>
+      <div class="text-right">
+        <button type="submit" class="btn btn-primary m-1">Pesquisar</button>
+        <a (click)="resetForm()" class="btn btn-primary  ">Limpar</a>
+        <a [routerLink]="['/add']" class="btn btn-success m-1 ">Novo Sistema</a>
+      </div>
+    </form>
   </div>
 </div>
+<!--<p *ngIf="!(sistemas$ | async)"><em>Carregando...</em></p>-->
 <table class="table table-sm table-hover" *ngIf="(sistemas$ | async)?.length>0">
   <thead>
     <tr>

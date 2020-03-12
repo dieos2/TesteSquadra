@@ -22,8 +22,8 @@ export class SistemaService {
     this.myApiUrl = 'api/Sistemas/';
   }
 
-  getSistemas(): Observable<Sistema[]> {
-    return this.http.get<Sistema[]>(this.myAppUrl + this.myApiUrl)
+  getSistemas(pesquisa): Observable<Sistema[]> {
+    return this.http.get<Sistema[]>(this.myAppUrl + this.myApiUrl + pesquisa)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
