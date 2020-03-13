@@ -41,10 +41,12 @@ namespace TesteSquadra
             });
             //injeta a classe de serviço
             services.AddTransient<ISistemaService, SistemaService>();
+            //conexão com o banco
             services.AddDbContext<TesteSquadraContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("TesteSquadraContext")));
-
+            //injeta o repositorio
             services.AddScoped(typeof(IDataRepository<>), typeof(DataRepository<>));
+            //build os arquivos do angular
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
@@ -52,7 +54,7 @@ namespace TesteSquadra
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Teste SquadraApi", Version = "v1" });
             });
         }
 
@@ -67,7 +69,7 @@ namespace TesteSquadra
             {
                 app.UseHsts();
             }
-
+            //habiliata o cors
             app.UseCors("CorsPolicy");
             app.UseHttpsRedirection();
             app.UseStaticFiles();

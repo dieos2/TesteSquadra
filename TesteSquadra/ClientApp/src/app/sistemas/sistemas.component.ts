@@ -13,10 +13,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class SistemasComponent implements OnInit {
   sistemas$: Observable<Sistema[]>;
-  public p: number = 1;
-  public count: number = 2;
-  pesquisaForm: any;
-  buscando = false;
+  public p: number = 1; //pagina atual na paginação
+  public count: number = 2; //itens por pagina
+  pesquisaForm: any; //formulario para pesquisa
+  buscando = false; //saber se esta sendo feito uma busca
   constructor(private SistemaService: SistemaService, private formbulider: FormBuilder) {
   }
 
@@ -28,10 +28,13 @@ export class SistemasComponent implements OnInit {
     });  
   }
   onPesquisaFormSubmit() {
-   
+   //recebe os dados da busca
     const pesquisa = this.pesquisaForm.value;
+    //busca na api
     this.loadSistemas(pesquisa);
+    //avisa que ta buscando
     this.buscando = true;
+    //volta para a pagina 1 da paginação
     this.p = 1;
   } 
   loadSistemas(pesquisa) {

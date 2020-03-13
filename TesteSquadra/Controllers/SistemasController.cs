@@ -22,7 +22,7 @@ namespace TesteSquadra.Controllers
             
             _service = service;
         }
-
+        //Busca com parametros não obrigatorios
         // GET: api/Sistemas
         [HttpGet]
         public ActionResult<IEnumerable<Sistemas>> GetSistemas(string sigla = "", string descricao = "", string email = "")
