@@ -42,8 +42,13 @@ namespace TesteSquadra.Services
         }
         public IEnumerable<Sistemas> GetAllItems(CriterioDeBusca criterioDeBusca)
         {
-
-            return _context.Sistemas.Where(a => a.Sigla.Contains(criterioDeBusca.Sigla) || a.Descricao.Contains(criterioDeBusca.Descricao) || a.Email.Contains(criterioDeBusca.Email));
+            if (criterioDeBusca.Descricao != "null" && criterioDeBusca.Sigla != "null" && criterioDeBusca.Email != "null") {
+                return _context.Sistemas.Where(a => a.Sigla.Contains(criterioDeBusca.Sigla) || a.Descricao.Contains(criterioDeBusca.Descricao) || a.Email.Contains(criterioDeBusca.Email));
+            }
+            else
+            {
+                return _context.Sistemas;
+            }
         }
         public Sistemas GetById(int id)
         {
