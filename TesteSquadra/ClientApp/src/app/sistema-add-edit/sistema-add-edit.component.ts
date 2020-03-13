@@ -45,7 +45,7 @@ export class SistemaAddEditComponent implements OnInit {
     if (this.avRoute.snapshot.params[idParam]) {
       this.postId = this.avRoute.snapshot.params[idParam];
     }
-
+    //builda o form com suas validações
     this.form = this.formBuilder.group(
       {
         postId: 0,
@@ -63,18 +63,18 @@ export class SistemaAddEditComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    //se for edição carregamos o objeto no form
     if (this.postId > 0) {
       this.actionType = 'Editar';
-      
+
       this.sistemaservice.getSistema(this.postId)
         .subscribe(data => (
           this.existingSistema = data,
-        
+
           this.form.controls[this.formDescricao].setValue(data.descricao),
 
           this.form.controls[this.formSigla].setValue(data.sigla),
-          this.form.controls[this.formEmail].setValue(data.email), 
+          this.form.controls[this.formEmail].setValue(data.email),
           this.form.controls[this.formUrl].setValue(data.url),
           this.form.controls[this.formStatus].setValue(data.status),
 
@@ -86,6 +86,7 @@ export class SistemaAddEditComponent implements OnInit {
         ));
 
     } else {
+      //como a justificativa é obrigatoria precisamos carregar ela no create
       this.form.controls[this.formJustificativaNova].setValue("Insercao")
     }
   }
@@ -95,7 +96,7 @@ export class SistemaAddEditComponent implements OnInit {
 
       return;
     }
-
+    //se for manter o sistema, salva os dados que vem do formulario
     if (this.actionType === 'Manter') {
       let sistema: Sistema = {
         dataEdicao: new Date(),
@@ -110,13 +111,21 @@ export class SistemaAddEditComponent implements OnInit {
 
       this.sistemaservice.saveSistema(sistema)
         .subscribe((data) => {
-          AppEventService.set('success', 'Sistema', 'Inserido com sucesso');
-               
-                
+          //avisa que salvou e espera um ok
+          const ans = confirm('Operação realizada com sucesso.');
+
+          if (ans) {
+            this.router.navigate(['/']);
+          }
+
+
         });
+      
+
     }
 
     if (this.actionType === 'Editar') {
+      debugger;
       let sistema: Sistema = {
         id: this.existingSistema.id,
         dataEdicao: new Date(),
@@ -130,15 +139,22 @@ export class SistemaAddEditComponent implements OnInit {
       };
       this.sistemaservice.updateSistema(sistema.id, sistema)
         .subscribe((data) => {
-          AppEventService.set('success', 'Sistema', 'Editado com sucesso');
+          //avisa que editou e espera um ok.
+          const ans = confirm('Operação realizada com sucesso.');
+          if (ans) {
+            this.router.navigate(['/']);
+          }
+          //AppEventService.set('success', 'Sistema', 'Editado com sucesso');
         });
+
+
     }
   }
 
   cancel() {
     this.router.navigate(['/']);
   }
-
+  //validação no form
   get descricao() { return this.form.get(this.formDescricao); }
   get sigla() { return this.form.get(this.formSigla); }
   get email() { return this.form.get(this.formEmail); }
