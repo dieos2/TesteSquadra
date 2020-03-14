@@ -76,6 +76,6 @@
 <!--se a busca não retorna resltado, mostra a isso-->
 <div class="p-10" *ngIf="(!sistemas$ || (sistemas$ | async)?.length === 0) && buscando">
   <h4>Nenhum Sistema foi encontrado. Favor revisar os critérios da sua pesquisa!</h4>
-  <p> <a (click)="resetForm()" class="btn btn-primary text-white  ">Limpar <i class="fa fa-redo"></i></a></p>
+  <p> <a (click)="resetForm()" class="btn btn-primary text-white  ">OK </a></p>
 </div>
 

@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SistemaService } from '../services/sistema.service';
 import { Sistema } from '../models/sistemas';
-
 import { DatePipe } from '@angular/common';
 
 @Component({

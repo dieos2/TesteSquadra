@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SistemaService } from '../services/sistema.service';
 import { Sistema } from '../models/sistemas';
-
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 
 
@@ -17,7 +17,7 @@ export class SistemasComponent implements OnInit {
   public count: number = 2; //itens por pagina
   pesquisaForm: any; //formulario para pesquisa
   buscando = false; //saber se esta sendo feito uma busca
-  constructor(private SistemaService: SistemaService, private formbulider: FormBuilder) {
+  constructor(private SistemaService: SistemaService, private formbulider: FormBuilder, private router: Router) {
   }
 
   ngOnInit() {
@@ -54,6 +54,8 @@ export class SistemasComponent implements OnInit {
     
     if (ans) {
       this.SistemaService.deleteSistema(Id).subscribe((data) => {
+       debugger
+        this.resetForm();
         this.p = 1;
       });
     }
