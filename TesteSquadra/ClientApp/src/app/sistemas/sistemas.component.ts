@@ -14,7 +14,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class SistemasComponent implements OnInit {
   sistemas$: Observable<Sistema[]>;
   public p: number = 1; //pagina atual na paginação
-  public count: number = 2; //itens por pagina
+  public count: number = 5; //itens por pagina
   pesquisaForm: any; //formulario para pesquisa
   buscando = false; //saber se esta sendo feito uma busca
   constructor(private SistemaService: SistemaService, private formbulider: FormBuilder, private router: Router) {
@@ -22,13 +22,14 @@ export class SistemasComponent implements OnInit {
 
   ngOnInit() {
     this.pesquisaForm = this.formbulider.group({
-      Descricao: [''],
-      Sigla: [''],
-      Email: ['', [Validators.compose([Validators.email])]],
+      Descricao: [null],
+      Sigla: [null],
+      Email: [null, [Validators.compose([Validators.email])]],
     });  
   }
   onPesquisaFormSubmit() {
    //recebe os dados da busca
+    debugger;
     const pesquisa = this.pesquisaForm.value;
     //busca na api
     this.loadSistemas(pesquisa);
@@ -45,7 +46,7 @@ export class SistemasComponent implements OnInit {
   resetForm() {
     
     this.pesquisaForm.reset();
-    this.onPesquisaFormSubmit();
+    this.buscando = false;
     this.buscando = false;
   }
 
@@ -54,7 +55,6 @@ export class SistemasComponent implements OnInit {
     
     if (ans) {
       this.SistemaService.deleteSistema(Id).subscribe((data) => {
-       debugger
         this.resetForm();
         this.p = 1;
       });

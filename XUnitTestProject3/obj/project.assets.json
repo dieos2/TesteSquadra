@@ -8284,25 +8284,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dieos\\.nuget\\packages\\": {},
+    "C:\\Users\\DELL\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dieos\\source\\repos\\TesteSquadra\\XUnitTestProject3\\XUnitTestProject3.csproj",
+      "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\TesteSquadra\\XUnitTestProject3\\XUnitTestProject3.csproj",
       "projectName": "XUnitTestProject3",
-      "projectPath": "C:\\Users\\dieos\\source\\repos\\TesteSquadra\\XUnitTestProject3\\XUnitTestProject3.csproj",
-      "packagesPath": "C:\\Users\\dieos\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dieos\\source\\repos\\TesteSquadra\\XUnitTestProject3\\obj\\",
+      "projectPath": "C:\\Users\\DELL\\source\\repos\\TesteSquadra\\XUnitTestProject3\\XUnitTestProject3.csproj",
+      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\DELL\\source\\repos\\TesteSquadra\\XUnitTestProject3\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\dieos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -8311,14 +8311,13 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://xifix.pkgs.visualstudio.com/_packaging/Xifix@Release/nuget/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\dieos\\source\\repos\\TesteSquadra\\TesteSquadra\\TesteSquadra.csproj": {
-              "projectPath": "C:\\Users\\dieos\\source\\repos\\TesteSquadra\\TesteSquadra\\TesteSquadra.csproj"
+            "C:\\Users\\DELL\\source\\repos\\TesteSquadra\\TesteSquadra\\TesteSquadra.csproj": {
+              "projectPath": "C:\\Users\\DELL\\source\\repos\\TesteSquadra\\TesteSquadra\\TesteSquadra.csproj"
             }
           }
         }
@@ -8363,7 +8362,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
       }
     }
   }
