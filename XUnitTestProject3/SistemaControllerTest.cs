@@ -21,6 +21,7 @@ namespace TesteSquadraTest
             _service = new SistemaServiceFake();
             _controller = new SistemasController(_service);
         }
+        //get objetos e espera okResult
         [Fact]
         public void Get_WhenCalled_ReturnsOkResult()
         {
@@ -32,6 +33,7 @@ namespace TesteSquadraTest
             // Assert
             Assert.IsType<OkObjectResult>(okResult.Result);
         }
+        //get todos os itens e compara o total de itens
         [Fact]
         public void Get_WhenCalled_ReturnsAllItems()
         {
@@ -42,9 +44,10 @@ namespace TesteSquadraTest
             var okResult = _controller.GetSistemas(sigla, descricao, email).Result as OkObjectResult;
             // Assert
             var items = Assert.IsType<List<Sistemas>>(okResult.Value);
-            Assert.Equal(1, items.Count);
+            Assert.Equal(10, items.Count);
         }
         //teste para o metodo get
+        //get um objeto por um id inexistente  e espera NotFound
         [Fact]
         public void GetById_UnknownIdPassed_ReturnsNotFoundResult()
         {
@@ -53,6 +56,7 @@ namespace TesteSquadraTest
             // Assert
             Assert.IsType<NotFoundResult>(notFoundResult);
         }
+        //get objeto com o id existente
         [Fact]
         public void GetById_ExistingIdPassed_ReturnsOkResult()
         {
@@ -63,6 +67,7 @@ namespace TesteSquadraTest
             // Assert
             Assert.IsType<OkObjectResult>(okResult);
         }
+        //pega um objeto com id existente e compara se o id é igual ao que foi solicitado
         [Fact]
         public void GetById_ExistingIdPassed_ReturnsRightItem()
         {
@@ -75,14 +80,20 @@ namespace TesteSquadraTest
             Assert.Equal(testeId, (okResult.Value as Sistemas).Id);
         }
         //teste para os metodo Add
+        //Adicona um objeto invalido e espera um badrequest
         [Fact]
         public void Add_InvalidObjectPassed_ReturnsBadRequest()
         {
             // Arrange
             var nameMissingItem = new Sistemas()
-            {
-                
-                Sigla = "Sgn"
+            {   
+                Sigla = "SGN",
+                Email = "contato@sgn.net.br",
+                URL = "https://sgn.net.br",
+                DataEdicao = DateTime.Now,
+                Justificativa = "Edição",
+                Status = "Ativo",
+                UsuarioResponsavel = "Diego Serra"
             };
             _controller.ModelState.AddModelError("Descricao", "Required");
             // Act
@@ -90,33 +101,42 @@ namespace TesteSquadraTest
             // Assert
             Assert.IsType<BadRequestObjectResult>(badResponse);
         }
-       
+       //Adicona um objeto valido
         [Fact]
         public void Add_ValidObjectPassed_ReturnsCreatedResponse()
         {
             // Arrange
             Sistemas testeItem = new Sistemas()
             {
-                Descricao = "Sistema de Gerenciamento de Noticias",
+                Descricao = "Sistema de gerenciamento de noticias",
                 Sigla = "SGN",
-                Email = "",
-                URL = ""
+                Email = "contato@sgn.net.br",
+                URL = "https://sgn.net.br",
+                DataEdicao = DateTime.Now,
+                Justificativa = "Edição",
+                Status = "Ativo",
+                UsuarioResponsavel = "Diego Serra"
             };
             // Act
             var createdResponse = _controller.PostSistemas(testeItem);
             // Assert
             Assert.IsType<CreatedAtActionResult>(createdResponse);
         }
+        //adiciona um objeto valido cerifica se é do tipo Sistema e se a sigla é SGN
         [Fact]
         public void Add_ValidObjectPassed_ReturnedResponseHasCreatedItem()
         {
             // Arrange
             var testItem = new Sistemas()
             {
-                Descricao = "Sistema de Gerenciamento de Noticias",
+                Descricao = "Sistema de gerenciamento de noticias",
                 Sigla = "SGN",
-                Email = "",
-                URL = ""
+                Email = "contato@sgn.net.br",
+                URL = "https://sgn.net.br",
+                DataEdicao = DateTime.Now,
+                Justificativa = "Edição",
+                Status = "Ativo",
+                UsuarioResponsavel = "Diego Serra"
             };
             // Act
             var createdResponse = _controller.PostSistemas(testItem) as CreatedAtActionResult;
@@ -126,6 +146,7 @@ namespace TesteSquadraTest
             Assert.Equal("SGN", item.Sigla);
         }
         //teste do remove
+        //tenta remover um item não existente.
         [Fact]
         public void Remove_NotExistingIdPassed_ReturnsNotFoundResponse()
         {
@@ -136,6 +157,7 @@ namespace TesteSquadraTest
             // Assert
             Assert.IsType<NotFoundResult>(badResponse);
         }
+        //remove um item existente
         [Fact]
         public void Remove_ExistingIdPassed_ReturnsOkResult()
         {
@@ -146,6 +168,7 @@ namespace TesteSquadraTest
             // Assert
             Assert.IsType<OkResult>(okResponse);
         }
+        //remove um item existente e espera que a contagem seja 9
         [Fact]
         public void Remove_ExistingIdPassed_RemovesOneItem()
         {
@@ -155,7 +178,7 @@ namespace TesteSquadraTest
             var okResponse = _controller.DeleteSistemas(Id_Existente);
             CriterioDeBusca criterioDeBusca = new CriterioDeBusca();
             // Assert
-            Assert.Equal(0, _service.GetAllItems(criterioDeBusca).Count());
+            Assert.Equal(9, _service.GetAllItems(criterioDeBusca).Count());
         }
     }
 }
